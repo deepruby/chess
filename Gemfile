@@ -33,7 +33,7 @@ group :doc do
 end
 
 gem 'pg'
-gem 'foundation-rails'
+gem 'foundation-rails', '5.4.5'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
