@@ -33,11 +33,9 @@ group :doc do
 end
 
 gem 'pg'
-<<<<<<< HEAD
 gem 'devise'
-=======
+
 gem 'bootstrap-sass', '~> 3.3.5'
->>>>>>> ca452cd4663a41418b0721f05d3e3149380a9d4e
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
