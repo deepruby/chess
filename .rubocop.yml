@@ -1,9 +1,14 @@
 AllCops:
   Include:
-    - Rakefile
+
     - config.ru
   Exclude:
+    - config/**
+    - db/**
+    - Rakefile
     - db/schema.rb
+    - test/test_helper.rb
+    - config/initializers/devise.rb
 
 # Configuration parameters: Exclude.
 Style/Documentation:
@@ -16,3 +21,6 @@ Style/Documentation:
 Style/ClassAndModuleChildren:
   Exclude:
     - 'test/test_helper.rb'
+
+LineLength:
+  Max: 120

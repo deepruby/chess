@@ -4,7 +4,8 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
+  # Devise will use the `secret_key_base` on Rails 4+
+  # applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'eec2802fea6be5cbd41206b45c8be61db91602ed4b4de07dbec7e085d34a40d108c8432a616c1681e7a54b73da501c6254c627d2859e5284d99e68cc7991f752'
 
@@ -77,7 +78,8 @@ Devise.setup do |config|
   # By default Devise will store the user in session. You can skip storage for
   # particular strategies by setting this option.
   # Notice that if you are skipping storage for all authentication paths, you
-  # may want to disable generating routes to Devise's sessions controller by
+  # may want to disable generating routes to
+  # Devise's sessions controller by
   # passing skip: :sessions to `devise_for` in your config/routes.rb
   config.skip_session_storage = [:http_auth]
 
