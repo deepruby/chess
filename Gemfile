@@ -38,6 +38,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'factory_girl_rails'
 gem 'simple_form'
 gem 'rubocop', require: false
+gem 'haml-lint', require: false
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
