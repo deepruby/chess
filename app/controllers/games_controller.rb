@@ -1,10 +1,10 @@
 class GamesController < ApplicationController
-	def index
+  def index
   end
 
   def new
     @game = Game.new
-	end
+  end
 
   def create
     @game = Game.create(game_params)
@@ -12,8 +12,8 @@ class GamesController < ApplicationController
     if @game.valid?
       redirect_to game_path(@game)
     else
-      render :new, :status => :unprocessable_entity
-    end 
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show
