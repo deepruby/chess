@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 20151118064605) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "white_player_id"
+    t.integer  "black_player_id"
+  end
+
+  create_table "pieces", force: true do |t|
+    t.integer  "x_position"
+    t.integer  "y_position"
+    t.integer  "player_id"
+    t.integer  "game_id"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

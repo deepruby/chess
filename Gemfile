@@ -39,6 +39,8 @@ gem 'factory_girl_rails'
 gem 'simple_form'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'rubocop', require: false
+gem 'haml-lint', require: false
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
