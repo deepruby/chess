@@ -16,14 +16,14 @@ class PieceTest < ActiveSupport::TestCase
   	black_pawn.update_attributes(:x_position => 2, :y_position => 3)
 
 
-    assert white_bishop.is_obstructed?(2,3) == false
+    refute white_bishop.is_obstructed?(2,3)
     assert black_bishop.is_obstructed?(3,2)
     assert black_rook.is_obstructed?(0,3)
     runtime_error = assert_raises(RuntimeError) do
 	  	white_knight.is_obstructed?(1,4)
 	  end
 		assert_equal("Invalid input. Not diagonal, horizontal, or vertical.", runtime_error.message)
-    assert white_rook.is_obstructed?(0,5) == false
-    assert white_rook.is_obstructed?(2,7) == false
+    refute white_rook.is_obstructed?(0,5)
+    refute white_rook.is_obstructed?(2,7)
   end
 end
