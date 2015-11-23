@@ -11,4 +11,12 @@ FactoryGirl.define do
   factory :game do
     name 'test'
   end
+
+  factory :user do
+    sequence :email do |n|
+      "test#{n}@example.com"
+    end
+    password "supersecure"
+    password_confirmation "supersecure"
+  end
 end
