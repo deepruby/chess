@@ -7,6 +7,8 @@ class Game < ActiveRecord::Base
 
   after_create :populate_board!
 
+  private
+
   def populate_board!
 		# White Pieces
     (0..7).each do |i|
