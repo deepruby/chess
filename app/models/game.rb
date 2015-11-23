@@ -14,21 +14,21 @@ class Game < ActiveRecord::Base
         game_id: id,
         x_position: i,
         y_position: 1,
-        player_id: white_player
+        player_id: white_player_id
         )
     end
 
-    Rook.create(game_id: id, x_position: 0, y_position: 0, player_id: white_player)
-    Rook.create(game_id: id, x_position: 7, y_position: 0, player_id: white_player)
+    Rook.create(game_id: id, x_position: 0, y_position: 0, player_id: white_player_id)
+    Rook.create(game_id: id, x_position: 7, y_position: 0, player_id: white_player_id)
 
-    Knight.create(game_id: id, x_position: 1, y_position: 0, player_id: white_player)
-    Knight.create(game_id: id, x_position: 6, y_position: 0, player_id: white_player)
+    Knight.create(game_id: id, x_position: 1, y_position: 0, player_id: white_player_id)
+    Knight.create(game_id: id, x_position: 6, y_position: 0, player_id: white_player_id)
 
-    Bishop.create(game_id: id, x_position: 2, y_position: 0, player_id: white_player)
-    Bishop.create(game_id: id, x_position: 5, y_position: 0, player_id: white_player)
+    Bishop.create(game_id: id, x_position: 2, y_position: 0, player_id: white_player_id)
+    Bishop.create(game_id: id, x_position: 5, y_position: 0, player_id: white_player_id)
 
-    Queen.create(game_id: id, x_position: 3, y_position: 0, player_id: white_player)
-    King.create(game_id: id, x_position: 4, y_position: 0, player_id: white_player)
+    Queen.create(game_id: id, x_position: 3, y_position: 0, player_id: white_player_id)
+    King.create(game_id: id, x_position: 4, y_position: 0, player_id: white_player_id)
 
     # Black Pieces
     (0..7).each do |i|
@@ -36,21 +36,21 @@ class Game < ActiveRecord::Base
         game_id: id,
         x_position: i,
         y_position: 6,
-        player_id: black_player
+        player_id: black_player_id
         )
     end
 
-    Rook.create(game_id: id, x_position: 0, y_position: 7, player_id: black_player)
-    Rook.create(game_id: id, x_position: 7, y_position: 7, player_id: black_player)
+    Rook.create(game_id: id, x_position: 0, y_position: 7, player_id: black_player_id)
+    Rook.create(game_id: id, x_position: 7, y_position: 7, player_id: black_player_id)
 
-    Knight.create(game_id: id, x_position: 1, y_position: 7, player_id: black_player)
-    Knight.create(game_id: id, x_position: 6, y_position: 7, player_id: black_player)
+    Knight.create(game_id: id, x_position: 1, y_position: 7, player_id: black_player_id)
+    Knight.create(game_id: id, x_position: 6, y_position: 7, player_id: black_player_id)
 
-    Bishop.create(game_id: id, x_position: 2, y_position: 7, player_id: black_player)
-    Bishop.create(game_id: id, x_position: 5, y_position: 7, player_id: black_player)
+    Bishop.create(game_id: id, x_position: 2, y_position: 7, player_id: black_player_id)
+    Bishop.create(game_id: id, x_position: 5, y_position: 7, player_id: black_player_id)
 
-    Queen.create(game_id: id, x_position: 3, y_position: 7, player_id: black_player)
-    King.create(game_id: id, x_position: 4, y_position: 7, player_id: black_player)
+    Queen.create(game_id: id, x_position: 3, y_position: 7, player_id: black_player_id)
+    King.create(game_id: id, x_position: 4, y_position: 7, player_id: black_player_id)
 
   end
 end
