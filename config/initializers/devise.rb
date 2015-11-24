@@ -3,10 +3,9 @@
 Devise.setup do |config|
   #config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'],
   config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'],
-                  callback_url: "http://localhost:3030/users/auth/facebook/callback", # will have to change this once app is live
+                  callback_url: "http://localhost:3030/users/auth/facebook/callback", # will have to change this when app is in production
                   scope: 'email',
-                  info_fields: 'email',
-                  :display => 'popup'
+                  info_fields: 'email'
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
