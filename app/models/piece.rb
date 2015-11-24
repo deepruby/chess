@@ -2,8 +2,9 @@ class Piece < ActiveRecord::Base
   belongs_to :player, class_name: 'User'
   belongs_to :game
 
-  def flat_position
+  LegalVectors = [-9, -8, -7, -1, 1, 7, 8, 9]
 
+  def flat_position
   	#self.x_position + self.y_position * 8
     flat_destination(self.x_position, self.y_position)
   end
@@ -27,7 +28,7 @@ class Piece < ActiveRecord::Base
   end
 
   def is_obstructed?(x,y)
-  	if [-9, -8, -7, -1, 1, 7, 8, 9].include?(self.vector_to(x,y))
+  	if LegalVectors.include?(self.vector_to(x,y))
 	  	self.game.pieces.any? do |piece|
 	  		self.vector_to(x,y) == self.vector_to(piece.x_position, piece.y_position) &&
 	  		self.distance_to(x,y) > self.distance_to(piece.x_position,piece.y_position)
