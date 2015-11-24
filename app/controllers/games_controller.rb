@@ -2,6 +2,7 @@ class GamesController < ApplicationController
   before_filter :authenticate_user!, :only => [:new, :create]
 
   def index
+    @open_games = Game.where('black_player_id' => nil)
   end
 
   def new

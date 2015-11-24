@@ -1,1 +1,11 @@
-<h1>Hello World!</h1>
+<h1>Welcome!</h1>
+
+<p>
+	Join an open game or select New Game to start your own
+</p>
+
+<ul>
+	<% @open_games.each do |game| %>
+		<li><%= link_to game.name, game_path(game) %></li>
+	<% end %>
+</ul>
