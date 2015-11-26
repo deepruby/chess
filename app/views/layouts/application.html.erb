@@ -29,7 +29,7 @@
 	    		<% else %>
 	        <li><%= link_to 'Sign up', new_user_registration_path %></li>
 	        <li><%= link_to 'Log in', new_user_session_path %></li>
-	        <li><%= link_to image_tag("facebook.png", width: "125", height: "30"), user_omniauth_authorize_path(:facebook) %></li>
+					<li><%= render "layouts/facebook" %></li>
 	        <% end %>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->

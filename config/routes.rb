@@ -5,14 +5,6 @@ Chess::Application.routes.draw do
   resources :games, only: [:new, :create, :show]
   root 'games#index'
 
-  # devise_scope :user do
-  #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
-  # end
-
-  # match 'auth/:provider/callback', to: 'session#create'
-  # match 'auth/failure', to: redirect('/')
-  # match 'signout', to: 'sessions#destroy', as: 'signout'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
