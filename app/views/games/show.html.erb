@@ -1,12 +1,10 @@
 <h1 class="text-center">Game: <%= @game.name %></h1>
-<div class="col-xs-10 col-xs-offset-1">
-	<table class="board">
-		<% 8.times do %>
-			<tr>
-				<% 8.times do %>
-					<td></td>
-				<% end %>
-			</tr>
-		<% end %>
-	</table>
-</div>
+<table class="board">
+	<% 8.times do %>
+		<tr>
+			<% 8.times do %>
+				<td></td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>
