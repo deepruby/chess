@@ -12,6 +12,10 @@ class Piece < ActiveRecord::Base
     [6, 0], [6, 1], [6, 2], [6, 3], [6, 4], [6, 5], [6, 6], [6, 7], 
     [7, 0], [7, 1], [7, 2], [7, 3], [7, 4], [7, 5], [7, 6], [7, 7]
   ]
+  
+  def legal_move?(x,y)
+    legal_moves.include?([x, y])
+  end
 
   ##
   # In order to calculate the vectors, we essentially need to 
