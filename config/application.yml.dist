@@ -1,0 +1,8 @@
+FACEBOOK_KEY: 
+FACEBOOK_SECRET: 
+
+development:
+  FACEBOOK_CALLBACK_URL: "http://localhost:3030/users/auth/facebook/callback"
+
+production:
+  FACEBOOK_CALLBACK_URL: "http://chess-deep-ruby.herokuapp.com//users/auth/facebook/callback"
