@@ -6,6 +6,6 @@
 
 <ul>
 	<% @open_games.each do |game| %>
-		<li><%= link_to game.name, game_path(game) %></li>
+		<li><%= link_to game.name, game_path(game, skip_validation: true, game: {black_player_id: current_user.id} ), method: :put %></li>
 	<% end %>
 </ul>

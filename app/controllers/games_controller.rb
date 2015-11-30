@@ -23,9 +23,17 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
+  def update
+    @game = Game.find(params[:id])
+    @game.assign_attributes(:black_player_id => current_user.id)
+    @game.save
+    respond_with @game
+  end
+
   private
 
   def game_params
     params.require(:game).permit(:name, :white_player_id)
   end
+
 end
