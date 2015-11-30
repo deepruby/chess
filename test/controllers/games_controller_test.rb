@@ -4,6 +4,7 @@ class GamesControllerTest < ActionController::TestCase
   test 'show' do
     game = FactoryGirl.create(:game)
     get :show, id: game.id
+    assert_response :success
   end
 
   test 'index' do
