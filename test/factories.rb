@@ -16,6 +16,9 @@ FactoryGirl.define do
     sequence :email do |n|
       "test#{n}@example.com"
     end
+    sequence :username do |n|
+      "grandmaster#{n}"
+    end
     password "supersecure"
     password_confirmation "supersecure"
   end
