@@ -1,11 +1,18 @@
-<h1>Welcome!</h1>
 
-<p>
-	Join an open game or select New Game to start your own
-</p>
+<div class="text-center">
+	<h1>Welcome!</h1>
 
-<ul>
-	<% @open_games.each do |game| %>
-		<li><%= link_to game.name, game_path(game, skip_validation: true, game: {black_player_id: current_user.id} ), method: :put %></li>
-	<% end %>
-</ul>
+	<p>
+		Join an open game or select New Game to start your own
+	</p>
+</div>
+
+<div class="booyah-box">
+	<h2>Open Games:</h2>
+	<ul>
+		<% @open_games.each do |game| %>
+			<%# email to be replaced by username in future %>
+			<li><%= link_to game.name, game_path(game, skip_validation: true, game: {black_player_id: current_user.id} ), method: :put %> with <%= User.find(game.white_player_id).email %></li>
+		<% end %>
+	</ul>
+</div>
