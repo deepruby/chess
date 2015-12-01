@@ -1,10 +1,19 @@
 <h1 class="text-center">Game: <%= @game.name %></h1>
 <table class="board">
 	<% 8.times do %>
+		<% file = 0 %>
 		<tr>
 			<% 8.times do %>
-				<td></td>
+				<% piece = @game.pieces.find{|piece| piece.x_position == file && piece.y_position == @rank} %>
+				<td>
+					<% if piece %>
+						<%= piece.color %>
+						<%= piece.type %>
+					<% end %>
+				</td>
+				<% file +=1 %>
 			<% end %>
 		</tr>
+		<% @rank -= 1 %>
 	<% end %>
 </table>
