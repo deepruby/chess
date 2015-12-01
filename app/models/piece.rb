@@ -2,7 +2,7 @@ class Piece < ActiveRecord::Base
   belongs_to :player, class_name: 'User'
   belongs_to :game
 
-  AllSquares = [
+  ALL_SQUARES = [
     [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7], 
     [1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [1, 7], 
     [2, 0], [2, 1], [2, 2], [2, 3], [2, 4], [2, 5], [2, 6], [2, 7], 
@@ -58,7 +58,7 @@ class Piece < ActiveRecord::Base
   # In chess, all moves that can be obstructed have one of the 
   # following 8 vectors.
 
-  LegalVectors = [-9, -8, -7, -1, 1, 7, 8, 9]
+  LEGAL_VECTORS = [-9, -8, -7, -1, 1, 7, 8, 9]
 
   ##
   # Calculate if a move is obstructed for a particular piece to a 
@@ -68,7 +68,7 @@ class Piece < ActiveRecord::Base
   # cannot be obstructed (a knight's move or illegal move)
 
   def is_obstructed?(x,y)
-  	if LegalVectors.include?(self.vector_to(x,y))
+  	if LEGAL_VECTORS.include?(self.vector_to(x,y))
 	  	self.game.pieces.any? do |piece|
 	  		self.vector_to(x,y) == self.vector_to(piece.x_position, piece.y_position) &&
 	  		self.distance_to(x,y) > self.distance_to(piece.x_position,piece.y_position)
