@@ -2,6 +2,10 @@ class Piece < ActiveRecord::Base
   belongs_to :player, class_name: 'User'
   belongs_to :game
 
+  def color
+    player_id == game.white_player_id ? "White" : "Black"
+  end
+
   ##
   # In order to calculate the vectors, we essentially need to 
   # flatten the chess board, converting the position of the piece
