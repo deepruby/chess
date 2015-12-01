@@ -3,10 +3,17 @@ require 'test_helper'
 class KingTest < ActiveSupport::TestCase
 	setup :game_and_king
 
-  test 'Should be legal moves' do
+  test 'Legal vertical move' do
     assert @king.legal_move?(4, 1)
+  end
+
+  test 'Legal diagonal move' do
     assert @king.legal_move?(5, 1)
   end
+
+  test 'Illegal move' do
+    assert_not @king.legal_move?(5, 2)
+  end  
 
 	private
 
