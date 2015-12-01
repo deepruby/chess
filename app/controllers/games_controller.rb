@@ -20,7 +20,6 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @rank = 7
   end
 
   private
