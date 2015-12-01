@@ -62,4 +62,16 @@ class Piece < ActiveRecord::Base
 	  	raise "Invalid input. Not diagonal, horizontal, or vertical."
 	  end
   end
+
+  def move(x,y)
+    if self.legal_move(x,y) && self.is_obstructed(x,y)
+      self.capture_opponent(x, y)
+      self.update_attributes(x_position: x, y_position: y)
+    end
+  end
+
+  def capture_opponent(x,y)
+    opponent_piece = self.game.pieces.where.not(player_id: self.player_id).where(x_position: x, y_position: y).first
+    opponent_piece.update_attributes(x_position: 0, y_position: 0, captured: true) if opponent_piece 
+  end
 end
