@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   before_filter :authenticate_user!, :only => [:new, :create, :index]
 
   def index
-    @open_games = Game.where('black_player_id' => nil)
+    @open_games = Game.where('black_player_id' => nil).where('white_player_id != ?', current_user.id)
   end
 
   def new
@@ -23,7 +23,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
-  def update
+  def join
     @game = Game.find(params[:id])
     @game.assign_attributes(:black_player_id => current_user.id)
     @game.save

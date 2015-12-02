@@ -11,7 +11,7 @@
 	<h2>Open Games:</h2>
 	<ul>
 		<% @open_games.each do |game| %>
-			<li><%= game.name %> with <%= User.find(game.white_player_id).username %> <%= link_to "Join Game", game_path(game, game: { black_player_id: current_user.uid }), method: :put, :class => "btn btn-primary" %></li>
+			<li><%= game.name %> with <%= User.find(game.white_player_id).username %> <%= link_to "Join Game", join_game_path(game), method: :put, :class => "btn btn-primary" %></li>
 		<% end %>
 	</ul>
 </div>
