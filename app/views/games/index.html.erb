@@ -11,8 +11,7 @@
 	<h2>Open Games:</h2>
 	<ul>
 		<% @open_games.each do |game| %>
-			<%# email to be replaced by username in future %>
-			<li><%= link_to game.name, game_path(game, skip_validation: true, game: {black_player_id: current_user.id} ), method: :put %> with <%= User.find(game.white_player_id).email %></li>
+			<li><%= game.name %> with <%= User.find(game.white_player_id).username %> <%= link_to "Join Game", game_path(game, game: { black_player_id: current_user.uid }), method: :put, :class => "btn btn-primary" %></li>
 		<% end %>
 	</ul>
 </div>

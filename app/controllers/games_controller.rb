@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_filter :authenticate_user!, :only => [:new, :create]
+  before_filter :authenticate_user!, :only => [:new, :create, :index]
 
   def index
     @open_games = Game.where('black_player_id' => nil)
@@ -27,7 +27,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @game.assign_attributes(:black_player_id => current_user.id)
     @game.save
-    respond_with @game
+    redirect_to game_path(@game)
   end
 
   private
