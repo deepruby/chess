@@ -37,6 +37,8 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'factory_girl_rails'
 gem 'simple_form'
+gem 'omniauth-facebook'
+gem 'figaro'
 gem 'rubocop', require: false
 gem 'haml-lint', require: false
 
