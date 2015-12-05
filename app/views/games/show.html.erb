@@ -8,7 +8,7 @@
 				<% piece = @game.pieces.find{|piece| piece.x_position == file && piece.y_position == rank} %>
 				<td>
 					<% if piece %>
-						<%= image_tag "#{piece.color.downcase}-#{piece.type.downcase}.svg", :alt => "#{piece.color} #{piece.type}" %>
+						<%= image_tag "#{piece.color.downcase}-#{piece.type.downcase}.svg", class: 'draggable', :alt => "#{piece.color} #{piece.type}" %>
 					<% end %>
 				</td>
 				<% file +=1 %>
