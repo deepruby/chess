@@ -96,7 +96,8 @@ class Piece < ActiveRecord::Base
 
   ##
   # Find an opponent piece in the particular square (distination)
-  # "Capture" the piece if found by setting x, y position to nil  
+  # "Capture" the piece if found by setting x, y position to nil
+  
   def capture_opponent!(x,y)
     opponent_piece = self.game.pieces.where.not(player_id: self.player_id).where(x_position: x, y_position: y).first
     opponent_piece.update_attributes(x_position: nil, y_position: nil) if opponent_piece 
