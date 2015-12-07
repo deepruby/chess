@@ -40,4 +40,21 @@ class UserFacebookSignInTest < ActionDispatch::IntegrationTest
     assert_equal 1, User.count
     assert_redirected_to root_path
   end
+
+  test "log in with facebook - name" do
+
+    OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+      :provider => 'facebook',
+      :uid => '123545',
+      :info => {:email => 'test@email.com', :name => 'test user'}
+    })
+      
+    assert_difference 'User.count' do
+      get "/users/auth/facebook/callback"
+    end
+
+    assert_equal 'test user', User.last.username
+    assert_redirected_to root_path
+  end
+
 end
