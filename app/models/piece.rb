@@ -81,4 +81,25 @@ class Piece < ActiveRecord::Base
 	  	raise "Invalid input. Not diagonal, horizontal, or vertical."
 	  end
   end
+
+  ##
+  # Check for a valid unobstructed move
+  # Check and capture opponent's piece if there is
+  # Move the actual piec
+
+  def move!(x,y)
+    if self.legal_move?(x,y)
+      self.capture_opponent!(x,y)
+      self.update_attributes(x_position: x, y_position: y)
+    end
+  end
+
+  ##
+  # Find an opponent piece in the particular square (distination)
+  # "Capture" the piece if found by setting x, y position to nil
+  
+  def capture_opponent!(x,y)
+    opponent_piece = self.game.pieces.where.not(player_id: self.player_id).where(x_position: x, y_position: y).first
+    opponent_piece.update_attributes(x_position: nil, y_position: nil) if opponent_piece 
+  end
 end
