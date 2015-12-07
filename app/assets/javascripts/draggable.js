@@ -1,3 +1,3 @@
 $(function() {
-    $( ".draggable" ).draggable({ grid: [ 20, 20 ] });
+    $( ".draggable" ).draggable({ grid: [ 60, 60 ] });
   });
