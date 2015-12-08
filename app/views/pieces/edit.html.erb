@@ -7,13 +7,13 @@
 			<% 8.times do %>
 				<% piece = @game.pieces.find{|piece| piece.x_position == file && piece.y_position == rank} %>
 				<td>
-					<% if piece %>						
-						<%= link_to edit_piece_path(piece) do %>
-							<div style="height:100%;width:100%">
+					<%= link_to piece_path(@piece, :params => {x_position: file, y_position: rank}), method: :put do %>
+						<div style="height:100%;width:100%">
+							<% if piece %>
 								<%= image_tag "#{piece.color.downcase}-#{piece.type.downcase}.svg", :alt => "#{piece.color} #{piece.type}" %>
-					    </div>
-					  <% end %>
-					<% end %>
+						  <% end %>
+				    </div>
+				  <% end %>
 				</td>
 				<% file +=1 %>
 			<% end %>
