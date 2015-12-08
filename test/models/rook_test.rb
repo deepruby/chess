@@ -3,10 +3,6 @@ require 'test_helper'
 class RookTest < ActiveSupport::TestCase
   setup :game_and_rook
 
-  test '3,7 is obstructed' do
-    assert @rook.is_obstructed?(3, 7)
-  end
-
   test 'Legal vertical move' do
     assert @rook.legal_move?(3, 5)
   end
