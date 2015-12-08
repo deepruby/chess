@@ -90,8 +90,8 @@ class Piece < ActiveRecord::Base
 	  		self.vector_to(x,y) == self.vector_to(piece.x_position, piece.y_position) &&
 	  		self.distance_to(x,y) > self.distance_to(piece.x_position,piece.y_position)
 	  	end
-	  else
-	  	raise "Invalid input. Not diagonal, horizontal, or vertical."
+	  # else
+	  # 	raise "Invalid input. Not diagonal, horizontal, or vertical."
 	  end
   end
 

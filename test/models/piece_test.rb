@@ -15,12 +15,12 @@ class PieceTest < ActiveSupport::TestCase
     assert @black_rook.is_obstructed?(0,3)
   end
 
-  test "knight cannot be obstructed" do
-    runtime_error = assert_raises(RuntimeError) do
-      @white_knight.is_obstructed?(1,4)
-    end
-    assert_equal("Invalid input. Not diagonal, horizontal, or vertical.", runtime_error.message)
-  end
+  # test "knight cannot be obstructed" do
+  #   runtime_error = assert_raises(RuntimeError) do
+  #     @white_knight.is_obstructed?(1,4)
+  #   end
+  #   assert_equal("Invalid input. Not diagonal, horizontal, or vertical.", runtime_error.message)
+  # end
 
   test "not obstructed piece in destination" do
     assert_not @white_rook.is_obstructed?(0,5)
