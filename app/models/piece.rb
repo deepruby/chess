@@ -13,6 +13,17 @@ class Piece < ActiveRecord::Base
     [7, 0], [7, 1], [7, 2], [7, 3], [7, 4], [7, 5], [7, 6], [7, 7]
   ]
   
+  ##
+  # Pieces can only move to a square that is either unoccupied
+  # or occupied by an opponent's piece
+  def accessible_squares
+    ALL_SQUARES.reject do |square|
+      game.pieces.any? do |piece|
+        square[0] == piece.x_position && square[1] == piece.y_position
+      end
+    end
+  end
+
   def legal_move?(x,y)
     legal_moves.include?([x, y])
   end
