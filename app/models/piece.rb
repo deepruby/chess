@@ -19,7 +19,9 @@ class Piece < ActiveRecord::Base
   def accessible_squares
     ALL_SQUARES.reject do |square|
       game.pieces.any? do |piece|
-        square[0] == piece.x_position && square[1] == piece.y_position
+        player_id == piece.player_id &&
+        square[0] == piece.x_position && 
+        square[1] == piece.y_position
       end
     end
   end
