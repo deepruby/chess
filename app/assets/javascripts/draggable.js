@@ -1,5 +1,6 @@
 $(function() {
     $( ".draggable" ).draggable({ grid: [ 60, 60 ] });
+    $( ".draggable").draggable({ revert: true })
     $( ".droppable" ).droppable({
     	drop: function( event, ui ) {
     		$.ajax({
