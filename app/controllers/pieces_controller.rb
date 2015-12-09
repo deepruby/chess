@@ -8,6 +8,7 @@ class PiecesController < ApplicationController
     @piece = Piece.find(params[:id])
     @game = @piece.game
     @piece.update_attributes(piece_params)
+    render nothing: true
 	end
 
   private
