@@ -1,5 +1,5 @@
 class PiecesController < ApplicationController
-	def edit
+  def edit
     @piece = Piece.find(params[:id])
     @game = @piece.game
 	end
@@ -7,8 +7,12 @@ class PiecesController < ApplicationController
 	def update
     @piece = Piece.find(params[:id])
     @game = @piece.game
-    @piece.update_attributes(:x_position => params[:x_position],
-    	:y_position => params[:y_position])
-    redirect_to game_path(@game)
+    @piece.update_attributes(piece_params)
 	end
+
+  private
+
+  def piece_params
+    params.require(:piece).permit(:x_position, :y_position)
+  end
 end
