@@ -34,10 +34,10 @@ class RookTest < ActiveSupport::TestCase
   private
 
   def game_and_rook
-    @game = Game.create(:name => 'lolomg', :white_player_id => 1)
+    @game = Game.create(name: 'lolomg', white_player_id: 1)
     @rook = @game.pieces.create(
-      type: 'Rook', 
-      x_position: 3, 
+      type: 'Rook',
+      x_position: 3,
       y_position: 4,
       player_id: 1)
   end

@@ -34,31 +34,31 @@ class KnightTest < ActiveSupport::TestCase
   private
 
   def game_and_knight
-    @game = Game.create(:name => 'lolomg', :white_player_id => 1)
+    @game = Game.create(name: 'lolomg', white_player_id: 1)
     @knight = @game.pieces.create(
-      type: 'Knight', 
-      x_position: 3, 
+      type: 'Knight',
+      x_position: 3,
       y_position: 3,
       player_id: 1)
     @black_pawn = @game.pieces.create(
-      type: 'Pawn', 
-      x_position: 4, 
-      y_position: 5, 
+      type: 'Pawn',
+      x_position: 4,
+      y_position: 5,
       player_id: 2)
     @white_pawn_1 = @game.pieces.create(
-      type: 'Pawn', 
-      x_position: 3, 
-      y_position: 4, 
+      type: 'Pawn',
+      x_position: 3,
+      y_position: 4,
       player_id: 1)
     @white_pawn_2 = @game.pieces.create(
-      type: 'Pawn', 
-      x_position: 4, 
-      y_position: 4, 
-      player_id: 1)    
+      type: 'Pawn',
+      x_position: 4,
+      y_position: 4,
+      player_id: 1)
     @white_pawn_3 = @game.pieces.create(
-      type: 'Pawn', 
-      x_position: 4, 
-      y_position: 3, 
+      type: 'Pawn',
+      x_position: 4,
+      y_position: 3,
       player_id: 1)
   end
 end

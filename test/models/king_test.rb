@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class KingTest < ActiveSupport::TestCase
-	setup :game_and_king
+  setup :game_and_king
 
   test 'Legal vertical move' do
     assert @king.legal_move?(4, 3)
@@ -13,12 +13,12 @@ class KingTest < ActiveSupport::TestCase
 
   test 'Illegal move' do
     assert_not @king.legal_move?(5, 4)
-  end  
+  end
 
-	private
+  private
 
   def game_and_king
-    @game = Game.create(:name => 'lolomg', :white_player_id => 1)
+    @game = Game.create(name: 'lolomg', white_player_id: 1)
     @king = @game.pieces.create(type: 'King', x_position: 4, y_position: 2)
   end
 end

@@ -30,10 +30,10 @@ class BishopTest < ActiveSupport::TestCase
   private
 
   def game_and_bishop
-    @game = Game.create(:name => 'lolomg', :white_player_id => 1)
+    @game = Game.create(name: 'lolomg', white_player_id: 1)
     @bishop = @game.pieces.create(
-      type: 'Bishop', 
-      x_position: 3, 
+      type: 'Bishop',
+      x_position: 3,
       y_position: 4,
       player_id: 1)
   end

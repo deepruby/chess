@@ -34,10 +34,10 @@ class QueenTest < ActiveSupport::TestCase
   private
 
   def game_and_queen
-    @game = Game.create(:name => 'lolomg', :white_player_id => 1)
+    @game = Game.create(name: 'lolomg', white_player_id: 1)
     @queen = @game.pieces.create(
-      type: 'Queen', 
-      x_position: 3, 
+      type: 'Queen',
+      x_position: 3,
       y_position: 3,
       player_id: 1)
   end

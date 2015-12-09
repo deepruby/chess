@@ -29,8 +29,8 @@ class PawnTest < ActiveSupport::TestCase
     assert_not @second_pawn.legal_move?(6, 4)
   end
 
-  test 'Illegal move, own piece occupies square' do
-    assert_not @pawn.legal_move?(4, 1)
+  test 'Black pawns advance down the file' do
+    assert @pawn.legal_move?(2, 5)
   end
 
   test 'Illegal move for all piece types' do
@@ -40,8 +40,9 @@ class PawnTest < ActiveSupport::TestCase
   private
 
   def game_and_pawn
-    @game = Game.create(:name => 'lolomg', :white_player_id => 1, :black_player_id => 2)
-    @first_pawn = @game.pieces.find{|p| p.x_position == 1 && p.y_position == 1}
-    @second_pawn = @game.pieces.find{|p| p.x_position == 6 && p.y_position == 1}
+    @game = Game.create(name: 'lolomg', white_player_id: 1, black_player_id: 2)
+    @first_pawn = @game.pieces.find { |p| p.x_position == 1 && p.y_position == 1 }
+    @second_pawn = @game.pieces.find { |p| p.x_position == 6 && p.y_position == 1 }
+    @third_pawn = @game.pieces.find { |p| p.x_position == 2 && p.y_position == 6 }
   end
 end
