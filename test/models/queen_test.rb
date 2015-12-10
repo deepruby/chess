@@ -31,6 +31,10 @@ class QueenTest < ActiveSupport::TestCase
     assert_not @queen.legal_move?(8, 3)
   end
 
+  test 'Illegal move, not horizontal, vertical or diagonal' do
+    assert_not @queen.legal_move?(5, 4)
+  end
+
   private
 
   def game_and_queen

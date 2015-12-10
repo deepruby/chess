@@ -1,6 +1,6 @@
 class Queen < Piece
 	def legal_moves
-		accessible_squares.reject{|s| is_obstructed?(s[0],s[1])}.select do |s|
+		unobstructed_squares.select do |s|
 			x_position == s[0] || y_position == s[1] ||
 			(x_position - s[0]).abs == (y_position - s[1]).abs
 		end

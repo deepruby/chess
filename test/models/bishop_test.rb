@@ -27,6 +27,19 @@ class BishopTest < ActiveSupport::TestCase
     assert_not @bishop.legal_move?(6, 1)
   end
 
+  test 'Illegal move, not horizontal, vertical or diagonal' do
+    assert_not @bishop.legal_move?(4, 4)
+  end
+
+  test 'Illegal move, not on board' do
+    new_bishop = @game.pieces.create(
+      type: 'Bishop',
+      x_position: 7,
+      y_position: 3,
+      player_id: 1)
+    assert_not new_bishop.legal_move?(8, 4)
+  end
+
   private
 
   def game_and_bishop

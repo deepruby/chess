@@ -15,6 +15,15 @@ class KingTest < ActiveSupport::TestCase
     assert_not @king.legal_move?(5, 4)
   end
 
+  test 'Illegal move, not on board' do
+    new_king = @game.pieces.create(
+      type: 'King',
+      x_position: 7,
+      y_position: 3,
+      player_id: 1)
+    assert_not new_king.legal_move?(8, 3)
+  end
+
   private
 
   def game_and_king

@@ -26,6 +26,13 @@ class Piece < ActiveRecord::Base
     end
   end
 
+  ##
+  # Use this method in place of accessible_squares for piece
+  # types whose moves can be obstructed
+  def unobstructed_squares
+    accessible_squares.reject{|s| is_obstructed?(s[0],s[1])}
+  end
+
   def legal_move?(x,y)
     legal_moves.include?([x, y])
   end
