@@ -1,8 +1,12 @@
 class GamesController < ApplicationController
-  before_filter :authenticate_user!, :only => [:new, :create, :index]
+  before_filter :authenticate_user!, :only => [:new, :create, :join]
 
   def index
-    @open_games = Game.where('black_player_id' => nil).where('white_player_id != ?', current_user.id)
+    if current_user
+      @open_games = Game.where('black_player_id' => nil).where('white_player_id != ?', current_user.id)
+    else
+      @open_games = Game.where('black_player_id' => nil)
+    end
   end
 
   def new
@@ -25,9 +29,12 @@ class GamesController < ApplicationController
 
   def join
     @game = Game.find(params[:id])
-    @game.assign_attributes(:black_player_id => current_user.id)
-    @game.save
-    redirect_to game_path(@game)
+    if current_user.id == @game.white_player_id
+      return render :text => 'Not Allowed', :status => :forbidden
+    else
+      @game.update_attributes(black_player_id: current_user.id)
+      redirect_to game_path(@game)
+    end
   end
 
   private
