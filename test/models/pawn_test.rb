@@ -11,9 +11,9 @@ class PawnTest < ActiveSupport::TestCase
     assert @first_pawn.legal_move?(1, 3)
   end
 
-  # test 'Pawn cannot move diagonally unless capturing' do
-  #   assert_not @first_pawn.legal_move?(2, 2)
-  # end
+  test 'Pawn cannot move diagonally unless capturing' do
+    assert_not @first_pawn.legal_move?(2, 2)
+  end
 
   test 'Pawn can move diagonally if capturing' do
     @enemy_pawn = @game.pieces.create(
@@ -24,10 +24,10 @@ class PawnTest < ActiveSupport::TestCase
     assert @first_pawn.legal_move?(2, 2)
   end
 
-  # test 'Pawn that has moved can no longer advance 2 squares' do
-  #   @second_pawn.move!(6, 2)
-  #   assert_not @second_pawn.legal_move?(6, 4)
-  # end
+  test 'Pawn that has moved can no longer advance 2 squares' do
+    @second_pawn.move!(6, 2)
+    assert_not @second_pawn.legal_move?(6, 4)
+  end
 
   test 'Black pawns advance down the file' do
     assert @third_pawn.legal_move?(2, 5)
@@ -42,9 +42,13 @@ class PawnTest < ActiveSupport::TestCase
     assert_not @fourth_pawn.legal_move?(5, 4)
   end
 
-  # test 'Pawn cannot capture vertically' do
-  #   assert_not @fourth_pawn.legal_move?(5, 5)
-  # end
+  test 'Pawn cannot capture vertically' do
+    assert_not @fourth_pawn.legal_move?(5, 5)
+  end
+
+  test 'Pawn just does not move like that' do
+    assert_not @fourth_pawn.legal_move?(4, 4)
+  end
 
   private
 
