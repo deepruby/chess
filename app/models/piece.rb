@@ -90,7 +90,7 @@ class Piece < ActiveRecord::Base
   def move!(x,y)
     if self.legal_move?(x,y)
       self.capture_opponent!(x,y)
-      self.update_attributes(x_position: x, y_position: y)
+      self.update_attributes(x_position: x, y_position: y, moved: true)
     end
   end
 
