@@ -74,7 +74,7 @@ class KingTest < ActiveSupport::TestCase
     assert_equal 7, @right_rook.x_position
   end  
 
-	private
+  private
 
   def game_and_king
     @game = Game.create(:name => 'lolomg', :white_player_id => 1, :black_player_id => 2)
