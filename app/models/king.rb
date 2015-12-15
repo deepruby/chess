@@ -1,20 +1,23 @@
 class King < Piece
+
   def legal_moves
-    ALL_SQUARES.select do |s|
+    accessible_squares.select do |s|
       distance_to(s[0],s[1]) == 1
     end
   end
 
   def can_castle?(side) # enter either 'queen' or 'king'side
-    left_obstructed = self.game.pieces.where(x_position: [1,2,3], y_position: self.y_position)
-    right_obstructed = self.game.pieces.where(x_position: [5,6], y_position: self.y_position)
-    left_rook = self.game.pieces.find_by(type: 'Rook', player_id: self.player_id, x_position: 0)
-    right_rook = self.game.pieces.find_by(type: 'Rook', player_id: self.player_id, x_position: 7)
+    if side == 'queen' || 'king'
+      left_obstructed = self.game.pieces.where(x_position: [1,2,3], y_position: self.y_position)
+      right_obstructed = self.game.pieces.where(x_position: [5,6], y_position: self.y_position)
+      left_rook = self.game.pieces.find_by(type: 'Rook', player_id: self.player_id, x_position: 0)
+      right_rook = self.game.pieces.find_by(type: 'Rook', player_id: self.player_id, x_position: 7)
 
-    can_castle = {'queen' => false, 'king' => false}
-    can_castle['queen'] = true if left_rook && !left_rook.moved && !self.moved && left_obstructed.empty? && !self.game.check?
-    can_castle['king'] = true if right_rook && !right_rook.moved && !self.moved && right_obstructed.empty? && !self.game.check?
-    can_castle[side]
+      can_castle = {'queen' => false, 'king' => false}
+      can_castle['queen'] = true if left_rook && !left_rook.moved && !self.moved && left_obstructed.empty? && !self.game.check?
+      can_castle['king'] = true if right_rook && !right_rook.moved && !self.moved && right_obstructed.empty? && !self.game.check?
+      can_castle[side]
+    end
   end
 
   def castle!(side) # enter either 'queen' or 'king'side

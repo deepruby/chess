@@ -13,6 +13,26 @@ class Piece < ActiveRecord::Base
     [7, 0], [7, 1], [7, 2], [7, 3], [7, 4], [7, 5], [7, 6], [7, 7]
   ]
   
+  ##
+  # Pieces can only move to a square that is either unoccupied
+  # or occupied by an opponent's piece
+  def accessible_squares
+    ALL_SQUARES.reject do |square|
+      game.pieces.any? do |piece|
+        player_id == piece.player_id &&
+        square[0] == piece.x_position && 
+        square[1] == piece.y_position
+      end
+    end
+  end
+
+  ##
+  # Use this method in place of accessible_squares for piece
+  # types whose moves can be obstructed
+  def unobstructed_squares
+    accessible_squares.reject{|s| is_obstructed?(s[0],s[1])}
+  end
+
   def legal_move?(x,y)
     legal_moves.include?([x, y])
   end
@@ -77,8 +97,8 @@ class Piece < ActiveRecord::Base
 	  		self.vector_to(x,y) == self.vector_to(piece.x_position, piece.y_position) &&
 	  		self.distance_to(x,y) > self.distance_to(piece.x_position,piece.y_position)
 	  	end
-	  else
-	  	raise "Invalid input. Not diagonal, horizontal, or vertical."
+	  # else
+	  # 	raise "Invalid input. Not diagonal, horizontal, or vertical."
 	  end
   end
 
