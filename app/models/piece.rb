@@ -94,8 +94,10 @@ class Piece < ActiveRecord::Base
   def is_obstructed?(x,y)
   	if LEGAL_VECTORS.include?(self.vector_to(x,y))
 	  	self.game.pieces.any? do |piece|
-	  		self.vector_to(x,y) == self.vector_to(piece.x_position, piece.y_position) &&
-	  		self.distance_to(x,y) > self.distance_to(piece.x_position,piece.y_position)
+        if piece.x_position and piece.y_position
+	  		  self.vector_to(x,y) == self.vector_to(piece.x_position, piece.y_position) &&
+	  		  self.distance_to(x,y) > self.distance_to(piece.x_position,piece.y_position)
+        end
 	  	end
 	  # else
 	  # 	raise "Invalid input. Not diagonal, horizontal, or vertical."
