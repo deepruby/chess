@@ -27,14 +27,20 @@
 	      	  <li><%= link_to current_user.username, '#' %></li>
 	      		<li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></li>
 	    		<% else %>
-	        <li><%= link_to 'Sign up', new_user_registration_path %></li>
-	        <li><%= link_to 'Log in', new_user_session_path %></li>
+	    		<!-- Button trigger modal -->
+	    		<li><%= link_to 'Sign up', '#signUpModal', "data-toggle" => "modal" %></li>
+	        <!-- Button trigger modal -->
+	        <li><%= link_to 'Log in', '#logInModal', "data-toggle" => "modal" %></li>
 					<li><%= render "layouts/facebook" %></li>
 	        <% end %>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
+
+  <%= render "layouts/login_modal" %>
+  <%= render "layouts/signup_modal" %>
+
 	<% if notice %>
 		<p class="alert alert-success"><%= notice %></p>
 	<% end %>
