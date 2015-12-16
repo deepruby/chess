@@ -1,1 +1,17 @@
-<h1>Hello World!</h1>
+
+<div class="text-center">
+	<h1>Welcome!</h1>
+
+	<p>
+		Join an open game or select New Game to start your own
+	</p>
+</div>
+
+<div class="booyah-box">
+	<h2>Open Games:</h2>
+	<ul>
+		<% @open_games.each do |game| %>
+			<li><%= game.name %> with <%= User.find(game.white_player_id).username %> <%= link_to "Join Game", join_game_path(game), method: :put, :class => "btn btn-primary" %></li>
+		<% end %>
+	</ul>
+</div>
