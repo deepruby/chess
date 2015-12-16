@@ -48,20 +48,18 @@ class GamesControllerTest < ActionController::TestCase
     assert_redirected_to game_path(Game.last)
   end
 
+ test "join" do
+   user = FactoryGirl.create(:user)
 
- # HELP DAVE! we couldn't get this to pass - the black_player_id does not save on our put?
- #test "join" do
- #  user = FactoryGirl.create(:user)
+   @game = FactoryGirl.create(:game)
 
- #  @game = FactoryGirl.create(:game)
+   sign_in user
+   
+   put :join, :id => @game, :game => { :black_player_id => user.id }
 
- #  sign_in user
- #  
- #  put :join, :id => @game, :game => { :black_player_id => user.id }
-
- #  assert_response :found
- #  assert_equal @game.black_player_id, user.id
- #end
+   assert_response :found
+   assert_equal Game.last.black_player_id, user.id
+ end
 
   test "join own game" do
     user = FactoryGirl.create(:user)
