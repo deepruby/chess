@@ -62,7 +62,7 @@ class KingTest < ActiveSupport::TestCase
     @left_rook.reload
     assert_equal 2, @castle_king.x_position
     assert_equal 3, @left_rook.x_position
-  end  
+  end
 
   test 'castling - king side' do
     @right_knight.update_attributes(x_position: nil, y_position: nil)
@@ -73,7 +73,7 @@ class KingTest < ActiveSupport::TestCase
     @right_rook.reload
     assert_equal 6, @castle_king.x_position
     assert_equal 5, @right_rook.x_position
-  end  
+  end
 
   test 'castling - invalid' do
     @castle_king.castle!('king')
@@ -86,7 +86,7 @@ class KingTest < ActiveSupport::TestCase
   private
 
   def game_and_king
-    @game = Game.create(:name => 'lolomg', :white_player_id => 1, :black_player_id => 2)
+    @game = Game.create(name: 'lolomg', white_player_id: 1, black_player_id: 2)
     @moves_king = @game.pieces.create(type: 'King', x_position: 4, y_position: 2)
     @castle_king = @game.pieces.find_by(type: 'King', player_id: 1)
     @queen = @game.pieces.find_by(type: 'Queen', player_id: 1)

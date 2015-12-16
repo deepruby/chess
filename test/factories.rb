@@ -20,7 +20,7 @@ FactoryGirl.define do
     sequence :username do |n|
       "grandmaster#{n}"
     end
-    password "supersecure"
-    password_confirmation "supersecure"
+    password 'supersecure'
+    password_confirmation 'supersecure'
   end
 end
