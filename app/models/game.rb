@@ -7,6 +7,10 @@ class Game < ActiveRecord::Base
 
   after_create :populate_board!
 
+  def check?
+    false
+  end
+
   private
 
   def populate_board!
