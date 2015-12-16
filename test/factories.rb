@@ -10,6 +10,7 @@ FactoryGirl.define do
 
   factory :game do
     name 'test'
+    white_player_id '32'
   end
 
   factory :user do
