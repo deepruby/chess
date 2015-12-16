@@ -7,6 +7,7 @@ Chess::Application.routes.draw do
       put :join
     end
   end
+  resources :pieces, only: [:update]
 
   root 'games#index'
 
