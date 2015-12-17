@@ -11,10 +11,8 @@ class Game < ActiveRecord::Base
     opponent_pieces = self.pieces.where.not(player_id: player_id)
     opponent_moves = []
     opponent_pieces.each do |piece|
-      if piece.x_position && piece.y_position
-        piece.legal_moves.each do |square|
-          opponent_moves.push(square)
-        end
+      piece.legal_moves.each do |square|
+        opponent_moves.push(square)
       end
     end
 

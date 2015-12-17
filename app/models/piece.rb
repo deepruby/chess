@@ -17,6 +17,7 @@ class Piece < ActiveRecord::Base
   # Pieces can only move to a square that is either unoccupied
   # or occupied by an opponent's piece
   def accessible_squares
+    return [] unless x_position && y_position
     ALL_SQUARES.reject do |square|
       game.pieces.any? do |piece|
         player_id == piece.player_id &&
