@@ -33,7 +33,6 @@ class Game < ActiveRecord::Base
           x_position: i,
           y_position: 1,
           player_id: white_player_id
-
           )
       end
 
@@ -56,7 +55,6 @@ class Game < ActiveRecord::Base
           x_position: i,
           y_position: 6,
           player_id: black_player_id
-  
         )
       end
 
