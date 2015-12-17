@@ -8,8 +8,8 @@ class Game < ActiveRecord::Base
   after_create :populate_board!
 
   def check?(player_id)
-    opponent_pieces = self.pieces.where.not(player_id: player_id)
     opponent_moves = []
+    opponent_pieces = self.pieces.where.not(player_id: player_id)
     opponent_pieces.each do |piece|
       if piece.x_position && piece.y_position
         piece.legal_moves.each do |square|
@@ -25,8 +25,8 @@ class Game < ActiveRecord::Base
   private
 
   def populate_board!
-    if self.pieces.empty?
-  		# White Pieces
+    if pieces.empty?
+      # White Pieces
       (0..7).each do |i|
         Pawn.create(
           game_id: id,
@@ -72,7 +72,7 @@ class Game < ActiveRecord::Base
       Queen.create(game_id: id, type: 'Queen', x_position: 3, y_position: 7, player_id: black_player_id)
       King.create(game_id: id, type: 'King', x_position: 4, y_position: 7, player_id: black_player_id)
     else
-      flash[:notice] = "An error has occured."
+      flash[:notice] = 'An error has occured.'
       redirect_to root_path
     end
   end

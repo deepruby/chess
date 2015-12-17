@@ -66,6 +66,14 @@ class PieceTest < ActiveSupport::TestCase
     assert_equal [nil, nil], [@white_pawn2.x_position, @white_pawn2.y_position]
   end
 
+  test 'moved flag' do
+    @black_king.update_attributes(x_position: 4, y_position: 2)
+    assert_equal false, @black_king.moved?
+    @black_king.move!(4, 3)
+    @black_king.reload
+    assert_equal true, @black_king.moved?
+  end
+
   private
 
   def initialize_board
