@@ -90,23 +90,14 @@ class Piece < ActiveRecord::Base
   # than the destination square?"  Raise an exception if the move
   # cannot be obstructed (a knight's move or illegal move)
 
-  # def is_obstructed?(x,y)
-  # 	if LEGAL_VECTORS.include?(self.vector_to(x,y))
-	 #  	self.game.pieces.any? do |piece|
-  #       if piece.x_position and piece.y_position
-	 #  		  self.vector_to(x,y) == self.vector_to(piece.x_position, piece.y_position) &&
-	 #  		  self.distance_to(x,y) > self.distance_to(piece.x_position,piece.y_position)
-  #       end
-	 #  	end
-	 #  # else
-	 #  # 	raise "Invalid input. Not diagonal, horizontal, or vertical."
-	 #  end
-
   def is_obstructed?(x, y)
     return unless LEGAL_VECTORS.include?(vector_to(x, y))
-    game.pieces.any? do |piece|
-      vector_to(x, y) == vector_to(piece.x_position, piece.y_position) &&
-        distance_to(x, y) > distance_to(piece.x_position, piece.y_position)
+
+      game.pieces.any? do |piece|
+            if piece.x_position and piece.y_position
+        vector_to(x, y) == vector_to(piece.x_position, piece.y_position) &&
+          distance_to(x, y) > distance_to(piece.x_position, piece.y_position)
+      end
     end
   end
 

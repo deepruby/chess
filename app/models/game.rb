@@ -32,8 +32,8 @@ class Game < ActiveRecord::Base
           game_id: id,
           x_position: i,
           y_position: 1,
-          player_id: white_player_id,
-          type: 'Pawn'
+          player_id: white_player_id
+
           )
       end
 
@@ -46,8 +46,8 @@ class Game < ActiveRecord::Base
       Bishop.create(game_id: id, x_position: 2, y_position: 0, player_id: white_player_id)
       Bishop.create(game_id: id, x_position: 5, y_position: 0, player_id: white_player_id)
 
-      Queen.create(game_id: id, type: 'Queen', x_position: 3, y_position: 0, player_id: white_player_id)
-      King.create(game_id: id, type: 'King', x_position: 4, y_position: 0, player_id: white_player_id)
+      Queen.create(game_id: id, x_position: 3, y_position: 0, player_id: white_player_id)
+      King.create(game_id: id, x_position: 4, y_position: 0, player_id: white_player_id)
 
       # Black Pieces
       (0..7).each do |i|
@@ -55,9 +55,9 @@ class Game < ActiveRecord::Base
           game_id: id,
           x_position: i,
           y_position: 6,
-          player_id: black_player_id,
-          type: 'Pawn'
-          )
+          player_id: black_player_id
+  
+        )
       end
 
       Rook.create(game_id: id, x_position: 0, y_position: 7, player_id: black_player_id)
@@ -69,8 +69,8 @@ class Game < ActiveRecord::Base
       Bishop.create(game_id: id, x_position: 2, y_position: 7, player_id: black_player_id)
       Bishop.create(game_id: id, x_position: 5, y_position: 7, player_id: black_player_id)
 
-      Queen.create(game_id: id, type: 'Queen', x_position: 3, y_position: 7, player_id: black_player_id)
-      King.create(game_id: id, type: 'King', x_position: 4, y_position: 7, player_id: black_player_id)
+      Queen.create(game_id: id, x_position: 3, y_position: 7, player_id: black_player_id)
+      King.create(game_id: id, x_position: 4, y_position: 7, player_id: black_player_id)
     else
       flash[:notice] = 'An error has occured.'
       redirect_to root_path

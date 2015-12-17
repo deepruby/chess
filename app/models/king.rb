@@ -13,8 +13,8 @@ class King < Piece
       right_rook = game.pieces.find_by(type: 'Rook', player_id: player_id, x_position: 7)
 
       can_castle = { 'queen' => false, 'king' => false }
-      can_castle['queen'] = true if left_rook && !left_rook.moved && !moved && left_obstructed.empty? && !game.check?
-      can_castle['king'] = true if right_rook && !right_rook.moved && !moved && right_obstructed.empty? && !game.check?
+      can_castle['queen'] = true if left_rook && !left_rook.moved && !moved && left_obstructed.empty? && !game.check?(self.player_id)
+      can_castle['king'] = true if right_rook && !right_rook.moved && !moved && right_obstructed.empty? && !game.check?(self.player_id)
       can_castle[side]
     end
   end
