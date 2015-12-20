@@ -5,4 +5,17 @@ class GameTest < ActiveSupport::TestCase
     game = Game.create(name: 'yolo', white_player_id: 1)
     assert_equal game.pieces.count, 32
   end
+
+  test 'white player should go first' do
+  	game = Game.create(name: 'yolo', white_player_id: 1)
+  	assert_equal game.turn, game.white_player_id
+  end
+
+  test 'turn changes after player moves' do
+  	game = Game.create(name: 'yolo', white_player_id: 1)
+  	pawn = game.pieces.find_by(type: 'Pawn', player_id: 1)
+  	pawn.move!(pawn.x_position, (pawn.y_position + 1))
+  	game.reload
+  	assert_equal game.black_player_id, game.turn
+  end
 end
