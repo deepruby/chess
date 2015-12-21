@@ -7,21 +7,6 @@ class Game < ActiveRecord::Base
 
   after_create :populate_board!
 
-  def check?(player_id)
-    opponent_moves = []
-    opponent_pieces = self.pieces.where.not(player_id: player_id)
-    opponent_pieces.each do |piece|
-      if piece.x_position && piece.y_position
-        piece.legal_moves.each do |square|
-          opponent_moves.push(square)
-        end
-      end
-    end
-
-    king = self.pieces.find_by(type: 'King', player_id: player_id)
-    opponent_moves.include?([king.x_position, king.y_position])
-  end
-
   private
 
   def populate_board!
