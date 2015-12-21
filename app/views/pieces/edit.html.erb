@@ -1,0 +1,23 @@
+<h1 class="text-center">Game: <%= @game.name %></h1>
+<table class="board">
+<% rank = 7 %>
+	<% 8.times do %>
+		<% file = 0 %>
+		<tr>
+			<% 8.times do %>
+				<% piece = @game.pieces.find{|piece| piece.x_position == file && piece.y_position == rank} %>
+				<td>
+					<%= link_to piece_path(@piece, :params => {x_position: file, y_position: rank}), method: :put do %>
+						<div style="height:100%;width:100%">
+							<% if piece %>
+								<%= image_tag "#{piece.color.downcase}-#{piece.type.downcase}.svg", :alt => "#{piece.color} #{piece.type}" %>
+						  <% end %>
+				    </div>
+				  <% end %>
+				</td>
+				<% file +=1 %>
+			<% end %>
+		</tr>
+		<% rank -= 1 %>
+	<% end %>
+</table>

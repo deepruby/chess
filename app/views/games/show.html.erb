@@ -6,9 +6,9 @@
 		<tr>
 			<% 8.times do %>
 				<% piece = @game.pieces.find{|piece| piece.x_position == file && piece.y_position == rank} %>
-				<td>
+				<td class="droppable" id="<%= "#{file}#{rank}" %>">
 					<% if piece %>
-						<%= image_tag "#{piece.color.downcase}-#{piece.type.downcase}.svg", :alt => "#{piece.color} #{piece.type}" %>
+						<%= image_tag "#{piece.color.downcase}-#{piece.type.downcase}.svg", class: "draggable", :alt => "#{piece.color} #{piece.type}", data: {update_url: "#{piece_path(piece)}"} %>
 					<% end %>
 				</td>
 				<% file +=1 %>

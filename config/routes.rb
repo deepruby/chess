@@ -7,8 +7,8 @@ Chess::Application.routes.draw do
       put :join
     end
   end
+  resources :pieces, only: [:update]
 
- 
   root 'games#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
