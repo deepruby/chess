@@ -117,6 +117,7 @@ class Piece < ActiveRecord::Base
     end
     capture_opponent!(x, y)
     update_attributes(x_position: x, y_position: y, moved: true)
+    game.change_turns!
   end
 
   ##
