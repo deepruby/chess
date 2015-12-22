@@ -16,7 +16,7 @@ class Game < ActiveRecord::Base
     turn == white_player_id ? black_player_id : white_player_id
   end
 
-  def change_turns
+  def change_turns!
     update_attributes(turn: opponent)
   end
 

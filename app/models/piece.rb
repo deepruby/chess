@@ -107,7 +107,7 @@ class Piece < ActiveRecord::Base
     if self.legal_move?(x,y)
       self.capture_opponent!(x,y)
       self.update_attributes(x_position: x, y_position: y, moved: true)
-      game.change_turns
+      game.change_turns!
     end
   end
 
