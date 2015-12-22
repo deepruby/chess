@@ -103,10 +103,12 @@ class Piece < ActiveRecord::Base
   # Check and capture opponent's piece if there is
   # Move the actual piec
 
-  def move!(x, y)
-    return unless legal_move?(x, y)
-    capture_opponent!(x, y)
-    update_attributes(x_position: x, y_position: y, moved: true)
+  def move!(x,y)
+    if self.legal_move?(x,y)
+      self.capture_opponent!(x,y)
+      self.update_attributes(x_position: x, y_position: y, moved: true)
+      game.change_turns!
+    end
   end
 
   ##
