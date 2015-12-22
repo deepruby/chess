@@ -105,6 +105,16 @@ class Piece < ActiveRecord::Base
 
   def move!(x, y)
     return unless legal_move?(x, y)
+    flagged = game.pieces.find_by(en_passant: true)
+    if type == 'Pawn'
+      if captures_diagonally?([x, y]) && !occupied?([x, y])
+        capture_opponent!(flagged.x_position, flagged.y_position)
+      end
+    end
+    flagged.update_attribute(:en_passant, false) if flagged
+    if type == 'Pawn' && (y - y_position).abs == 2
+      update_attribute(:en_passant, true)
+    end
     capture_opponent!(x, y)
     update_attributes(x_position: x, y_position: y, moved: true)
   end

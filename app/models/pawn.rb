@@ -3,7 +3,8 @@ class Pawn < Piece
     unobstructed_squares.select do |s|
       (forward_one?(s) && !occupied?(s)) ||
         (forward_two?(s) && !occupied?(s) && not_moved) ||
-        (captures_diagonally?(s) && occupied?(s))
+        (captures_diagonally?(s) && occupied?(s)) ||
+        (captures_diagonally?(s) && en_passant_capture?(s))
     end
   end
 
@@ -46,6 +47,14 @@ class Pawn < Piece
   def occupied?(square)
     game.pieces.any? do |piece|
       piece.x_position == square[0] && piece.y_position == square[1]
+    end
+  end
+
+  def en_passant_capture?(square)
+    game.pieces.any? do |piece|
+      piece.x_position == square[0] &&
+        piece.y_position == y_position &&
+        piece.en_passant
     end
   end
 end
