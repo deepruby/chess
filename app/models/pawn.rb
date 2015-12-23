@@ -1,10 +1,13 @@
 class Pawn < Piece
   def legal_moves
     unobstructed_squares.select do |s|
-      (forward_one?(s) && !occupied?(s)) ||
-        (forward_two?(s) && !occupied?(s) && not_moved) ||
-        (captures_diagonally?(s) && occupied?(s)) ||
-        (captures_diagonally?(s) && en_passant_capture?(s))
+      if !occupied?(s)
+        forward_one?(s) ||
+          (forward_two?(s) && not_moved) ||
+          (captures_diagonally?(s) && en_passant_capture?(s))
+      else
+        captures_diagonally?(s)
+      end
     end
   end
 
