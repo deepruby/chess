@@ -34,14 +34,10 @@ class King < Piece
   end
 
   def check?
-    opponent_moves = []
     opponent_pieces = self.game.pieces.where.not(player_id: player_id)
     opponent_pieces.each do |piece|
-      piece.legal_moves.each do |square|
-          opponent_moves.push(square)
-      end
+      return true if piece.legal_moves.include?([self.x_position, self.y_position])
     end
-
-    opponent_moves.include?([self.x_position, self.y_position])
+    false
   end
 end
