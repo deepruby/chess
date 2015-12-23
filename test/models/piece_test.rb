@@ -74,6 +74,15 @@ class PieceTest < ActiveSupport::TestCase
     assert_equal true, @black_king.moved?
   end
 
+  test 'captured piece has no legal moves' do
+    @black_king.update_attributes(x_position: 1, y_position: 5)
+    @black_king.move!(1, 6)
+    @black_king.reload
+    @white_pawn2.reload
+    assert_equal [nil, nil], [@white_pawn2.x_position, @white_pawn2.y_position]
+    assert_empty @white_pawn2.legal_moves
+  end
+
   private
 
   def initialize_board
