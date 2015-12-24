@@ -17,6 +17,7 @@ class Piece < ActiveRecord::Base
   # Pieces can only move to a square that is either unoccupied
   # or occupied by an opponent's piece
   def accessible_squares
+    return [] unless x_position && y_position
     ALL_SQUARES.reject do |square|
       game.pieces.any? do |piece|
         player_id == piece.player_id &&
@@ -93,8 +94,10 @@ class Piece < ActiveRecord::Base
   def is_obstructed?(x, y)
     return unless LEGAL_VECTORS.include?(vector_to(x, y))
     game.pieces.any? do |piece|
-      vector_to(x, y) == vector_to(piece.x_position, piece.y_position) &&
-        distance_to(x, y) > distance_to(piece.x_position, piece.y_position)
+      if piece.x_position and piece.y_position
+        vector_to(x, y) == vector_to(piece.x_position, piece.y_position) &&
+          distance_to(x, y) > distance_to(piece.x_position, piece.y_position)
+      end
     end
   end
 

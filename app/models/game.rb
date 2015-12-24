@@ -20,10 +20,6 @@ class Game < ActiveRecord::Base
     update_attributes(turn: opponent)
   end
 
-  def check?
-    false
-  end
-
   private
 
   def populate_board!
@@ -57,7 +53,7 @@ class Game < ActiveRecord::Base
           x_position: i,
           y_position: 6,
           player_id: black_player_id
-          )
+        )
       end
 
       Rook.create(game_id: id, x_position: 0, y_position: 7, player_id: black_player_id)
