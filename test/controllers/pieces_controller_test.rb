@@ -19,8 +19,6 @@ class PiecesControllerTest < ActionController::TestCase
 
   test 'update - moved, with capture' do
     @black_pawn.update_attributes(x_position: 2, y_position: 2)
-    @white_pawn.reload
-    @black_pawn.reload
     put :update, id: @white_pawn, piece: {x_position: 2, y_position: 2}
     assert_response :success
     @white_pawn.reload

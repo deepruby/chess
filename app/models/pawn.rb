@@ -3,7 +3,7 @@ class Pawn < Piece
     unobstructed_squares.select do |s|
       (forward_one?(s) && !occupied?(s)) ||
         (forward_two?(s) && !occupied?(s) && not_moved) ||
-        (captures_diagonally?(s))
+        captures_diagonally?(s)
     end
   end
 
