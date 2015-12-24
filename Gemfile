@@ -42,6 +42,9 @@ gem 'figaro'
 gem 'rubocop', require: false
 gem 'haml-lint', require: false
 
+gem 'jquery-ui-rails'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

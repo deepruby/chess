@@ -6,6 +6,19 @@ class Game < ActiveRecord::Base
   validates :name, presence: true
 
   after_create :populate_board!
+  after_create :set_default_turn!
+
+  def set_default_turn!
+    update_attributes(turn: white_player_id)
+  end
+
+  def opponent
+    turn == white_player_id ? black_player_id : white_player_id
+  end
+
+  def change_turns!
+    update_attributes(turn: opponent)
+  end
 
   private
 
