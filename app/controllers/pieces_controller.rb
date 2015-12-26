@@ -4,12 +4,12 @@ class PiecesController < ApplicationController
     @game = @piece.game
 	end
 
-	def update
+  def update
     @piece = Piece.find(params[:id])
     @game = @piece.game
-    @piece.update_attributes(piece_params)
+    flash[:alert] = 'Not a valid move' if !@piece.move!(piece_params[:x_position].to_i, piece_params[:y_position].to_i)
     render nothing: true
-	end
+  end
 
   private
 
