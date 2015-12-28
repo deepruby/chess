@@ -36,20 +36,17 @@ h1, h2, h3, h4, h5, h6, .navbar, .alert {
 
 .title-text {
   color: black;
+  font-family: helvetica, arial, sans-serif;
+  text-shadow: rgba(0,0,0,0.95) 1px 1px;
 }
 
 .title-text h1 {
-  font-family: helvetica, arial, sans-serif;
   font-weight: 900;
-  text-shadow: rgba(0,0,0,0.95) 1px 1px;
-    margin-top: 26px;
+  margin-top: 26px;
 }
 
-.frosty h3 {
-  font-family: helvetica, arial, sans-serif;
+.title-text h3 {
   font-weight: 200;
-  text-shadow: rgba(0,0,0,0.95) 1px 1px;
-
 }
 
 .navbar-inverse .navbar-brand {
@@ -61,8 +58,8 @@ h1, h2, h3, h4, h5, h6, .navbar, .alert {
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    color: white;
-    font-size: 20px;
+  color: white;
+  font-size: 20px;
 }
 
 @media screen and (max-width: 750px) {
