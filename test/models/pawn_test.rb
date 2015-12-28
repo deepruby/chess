@@ -106,6 +106,21 @@ class PawnTest < ActiveSupport::TestCase
     assert_equal [nil, nil], [black_pawn.x_position, black_pawn.y_position]
   end
 
+  test 'Fix bug in valid diagonal moves' do
+    game = Game.create(name: 'lolomg', white_player_id: 1, black_player_id: 2)
+    white_pawn = game.pieces.find_by(x_position: 0, y_position: 1)
+    white_pawn.move!(0, 3)
+    black_pawn = game.pieces.find_by(x_position: 1, y_position: 6)
+    black_pawn.move!(1, 4)
+    white_pawn.reload
+    assert white_pawn.legal_move?(1, 4)
+    white_pawn.move!(1, 4)
+    white_pawn.reload
+    black_pawn.reload
+    assert_equal [1, 4], [white_pawn.x_position, white_pawn.y_position]
+    assert_equal [nil, nil], [black_pawn.x_position, black_pawn.y_position]
+  end
+
   private
 
   def game_and_pawn
