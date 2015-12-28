@@ -5,9 +5,9 @@
   <br/>
   <%= simple_form_for @game do |f| %>
     <%= f.input :name %>
-		<%= f.input :white_player_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+    <%= f.input :white_player_id, :as => :hidden, :input_html => { :value => current_user.id } %>
     <br/>
     <%= f.button :submit, "Create Game", :class => 'btn btn-primary' %>
-  <% end %>
+    <% end %>
   <br/>
 </div>
