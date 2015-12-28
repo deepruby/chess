@@ -1,21 +1,72 @@
-.navbar.navbar-default {
-  margin-bottom: 0;
-}
-
 .booyah-box {
   -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
   -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
   box-shadow: 1px 1px 2px 0 #d0d0d0;
-  background: #000000;
+  background: rgba(0, 0, 0, 0.6);
   border: 1px solid #ccc;
   border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
   margin: 10px 100px;
   padding: 10px 10px;
   text-align: center;
   color: #fff;
-  }
+}
 
 .booyah-box > ul {
-    display: inline-block;
-    text-align:left;
+  display: inline-block;
+  text-align:left;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 18px;
+  list-style-type: none;
+}
+
+.hero {
+  background: url('home_image.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 600px;
+  box-shadow: 0px 3px 8px #2a2a2a;
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar, .alert {
+  margin: 0;
+}
+
+.title-text {
+  color: black;
+}
+
+.title-text h1 {
+  font-family: helvetica, arial, sans-serif;
+  font-weight: 900;
+  text-shadow: rgba(0,0,0,0.95) 1px 1px;
+    margin-top: 26px;
+}
+
+.frosty h3 {
+  font-family: helvetica, arial, sans-serif;
+  font-weight: 200;
+  text-shadow: rgba(0,0,0,0.95) 1px 1px;
+
+}
+
+.navbar-inverse .navbar-brand {
+  color: #990000;
+  font-weight: 900;
+  font-size: 22px;
+  text-shadow: rgba(0,0,0,0.95) 1px 1px;
+  font-family: helvetica, arial, sans-serif;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 750px) {
+  .booyah-box {
+  margin: 10px 10px;
   }
+}

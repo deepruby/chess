@@ -1,11 +1,13 @@
-<div class="col-xs-4 col-xs-offset-1">  
-  <h2>Start a New Game</h1>
+<br/>
+<br/>
+<div class="col-xs-12 col-sm-4 col-sm-offset-1">  
+  <h1>Start a New Game</h1>
   <br/>
-  
   <%= simple_form_for @game do |f| %>
     <%= f.input :name %>
 		<%= f.input :white_player_id, :as => :hidden, :input_html => { :value => current_user.id } %>
     <br/>
-    <%= f.submit 'Create Game' %>
+    <%= f.button :submit, "Create Game", :class => 'btn btn-primary' %>
   <% end %>
-<div> 
+  <br/>
+</div>

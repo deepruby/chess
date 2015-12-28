@@ -8,7 +8,7 @@
   	<%= csrf_meta_tags %>
 </head>
 <body>
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
 	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -17,6 +17,7 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
+	      <%= link_to 'CHESS by Deep Ruby', root_url, :class => "navbar-brand" %>
 	    </div>
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav navbar-left">
@@ -25,10 +26,10 @@
 	      <ul class="nav navbar-nav navbar-right">
 	      	<% if user_signed_in? %>
 	      	  <li><%= link_to current_user.username, '#' %></li>
-	      		<li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></li>
+	      		<li><%= link_to 'Log Out', destroy_user_session_path, :method => :delete %></li>
 	    		<% else %>
-	        <li><%= link_to 'Sign up', new_user_registration_path %></li>
-	        <li><%= link_to 'Log in', new_user_session_path %></li>
+	        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+	        <li><%= link_to 'Log In', new_user_session_path %></li>
 					<li><%= render "layouts/facebook" %></li>
 	        <% end %>
 	      </ul>
@@ -44,5 +45,16 @@
 	
 	<%= yield %>
 
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+  <div class="footer">
+    <div class="container">
+      <div class="col-xs-12">
+      	<br />
+        Created by Team <span class="deep-ruby">Deep Ruby</span>: Ken Mak, James Foster, Ford Fischer, Nin Yeung
+       <div>
+  </div>
 </body>
 </html>
