@@ -1,9 +1,13 @@
 class Pawn < Piece
   def legal_moves
     unobstructed_squares.select do |s|
-      (forward_one?(s) && !occupied?(s)) ||
-        (forward_two?(s) && !occupied?(s) && not_moved) ||
-        (captures_diagonally?(s) && occupied?(s))
+      if !occupied?(s)
+        forward_one?(s) ||
+          (forward_two?(s) && not_moved) ||
+          (captures_diagonally?(s) && en_passant_capture?(s))
+      else
+        captures_diagonally?(s)
+      end
     end
   end
 
@@ -46,6 +50,14 @@ class Pawn < Piece
   def occupied?(square)
     game.pieces.any? do |piece|
       piece.x_position == square[0] && piece.y_position == square[1]
+    end
+  end
+
+  def en_passant_capture?(square)
+    game.pieces.any? do |piece|
+      piece.x_position == square[0] &&
+        piece.y_position == y_position &&
+        piece.en_passant
     end
   end
 end
