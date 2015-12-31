@@ -20,7 +20,7 @@
 }
 
 .hero {
-  background: url('home_image.jpg') no-repeat center center fixed;
+  background: url(/assets/home_image.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -66,4 +66,8 @@ h1, h2, h3, h4, h5, h6, .navbar, .alert {
   .booyah-box {
   margin: 10px 10px;
   }
+}
+
+.log-in, .sign-up, .new-game {
+  margin-top: 5%;
 }
