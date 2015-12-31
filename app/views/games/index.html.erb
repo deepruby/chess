@@ -1,17 +1,24 @@
-
-<div class="text-center">
-	<h1>Welcome!</h1>
-
-	<p>
-		Join an open game or select New Game to start your own
-	</p>
+<div class="hero">
+  <div class="title-text col-xs-10 col-xs-offset-1">
+    <h1>WELCOME!</h1>
+    <br />
+    <h3>Join an open game below or start a new game</h3>
+    <br />
+  </div>
 </div>
-
+<br />
+<br />
 <div class="booyah-box">
-	<h2>Open Games:</h2>
-	<ul>
-		<% @open_games.each do |game| %>
-			<li><%= game.name %> with <%= User.find(game.white_player_id).username %> <%= link_to "Join Game", join_game_path(game), method: :put, :class => "btn btn-primary" %></li>
-		<% end %>
-	</ul>
+  <br />
+  <h2>Open Games:</h2>
+  <br />
+  <ul>
+    <% @open_games.each do |game| %>
+      <li><%= game.name %> with <%= User.find(game.white_player_id).username %> <%= link_to "Join Game", join_game_path(game), method: :put, :class => "btn btn-primary" %></li>
+      <br />
+    <% end %>
+  </ul>
+  <br />
 </div>
+<br />
+<br />

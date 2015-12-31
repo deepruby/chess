@@ -1,0 +1,35 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 80px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 80px;
+  background: black;
+  color: #cccccc;
+}
+
+@media screen and (max-width: 510px) {
+  .footer {
+    height: 140px;
+  }
+}
+
+.deep-ruby {
+  color: #990000;
+  font-weight: 900;
+  font-size: 25px;
+  text-shadow: rgba(0,0,0,0.95) 1px 1px;
+  font-family: helvetica, arial, sans-serif;
+}
