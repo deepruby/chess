@@ -50,6 +50,62 @@ class PawnTest < ActiveSupport::TestCase
     assert_not @fourth_pawn.legal_move?(4, 4)
   end
 
+  test 'Pawn starts with en passant flag nil' do
+    game = Game.create(name: 'lolomg', white_player_id: 1, black_player_id: 2)
+    white_pawn = game.pieces.find_by(x_position: 4, y_position: 1)
+    assert_nil white_pawn.en_passant
+  end
+
+  test 'Pawn advances 2, en passant flag true' do
+    game = Game.create(name: 'lolomg', white_player_id: 1, black_player_id: 2)
+    white_pawn = game.pieces.find_by(x_position: 4, y_position: 1)
+    white_pawn.move!(4, 3)
+    assert white_pawn.en_passant
+    assert white_pawn.x_position == 4 && white_pawn.y_position == 3
+  end
+
+  test 'Opponent moves, en passant resets to false' do
+    game = Game.create(name: 'lolomg', white_player_id: 1, black_player_id: 2)
+    white_pawn = game.pieces.find_by(x_position: 4, y_position: 1)
+    white_pawn.move!(4, 3)
+    assert white_pawn.en_passant
+    black_pawn = game.pieces.find_by(x_position: 3, y_position: 6)
+    black_pawn.move!(3, 4)
+    white_pawn.reload
+    assert_not white_pawn.en_passant
+  end
+
+  test 'En passant is legal move for pawn' do
+    game = Game.create(name: 'lolomg', white_player_id: 1, black_player_id: 2)
+    white_pawn = game.pieces.find_by(x_position: 4, y_position: 1)
+    white_pawn.move!(4, 3)
+    black_knight = game.pieces.find_by(x_position: 6, y_position: 7)
+    black_knight.move!(5, 5)
+    white_pawn.move!(4, 4)
+    black_pawn = game.pieces.find_by(x_position: 3, y_position: 6)
+    black_pawn.move!(3, 4)
+    white_pawn.reload
+    assert white_pawn.legal_move?(3, 5)
+  end
+
+  test 'En passant captures opponent pawn' do
+    game = Game.create(name: 'lolomg', white_player_id: 1, black_player_id: 2)
+    white_pawn = game.pieces.find_by(x_position: 4, y_position: 1)
+    white_pawn.move!(4, 3)
+    black_knight = game.pieces.find_by(x_position: 6, y_position: 7)
+    black_knight.move!(5, 5)
+    white_pawn.move!(4, 4)
+    black_pawn = game.pieces.find_by(x_position: 3, y_position: 6)
+    black_pawn.move!(3, 4)
+    white_pawn.reload
+    assert white_pawn.legal_move?(3, 5)
+    white_pawn.move!(3, 5)
+    white_pawn.reload
+    black_pawn.reload
+    assert_equal [3, 5], [white_pawn.x_position, white_pawn.y_position]
+    assert_equal [nil, nil], [black_pawn.x_position, black_pawn.y_position]
+  end
+
   private
 
   def game_and_pawn
