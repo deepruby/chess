@@ -44,7 +44,7 @@ class Pawn < Piece
   def captures_diagonally?(square)
     advances?(square) &&
       (square[1] - y_position).abs == 1 &&
-      (square[1] - x_position).abs == 1
+      (square[0] - x_position).abs == 1
   end
 
   def occupied?(square)
